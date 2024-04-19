@@ -3,16 +3,23 @@
 from inputimeout import inputimeout, TimeoutOccurred
 from colorama import Fore, Style, init
 
+# Initialize colorama to reset.
 init(autoreset=True)
 
+
+# Board class definition to handle the 3D Tic-Tac-Toe board operations.
 class Board:
     def __init__(self):
+        #Initialize a list of 27 spaces representing a 3x3x3 Tic-Tac-Toe board
         self.cells = [" " for _ in range(27)]
 
     
+    # Display the current state of the board with appropriate colors.
     def display(self):
+        # Define colors for differen players.
         colors = {"X": Fore.GREEN + Style.BRIGHT, "O": Fore.BLUE + Style.BRIGHT, " ": Fore.WHITE}
         index = 0
+        # Display the board layer by layer.
         for layer in range(3):
             print(Fore.YELLOW + f"Board {Fore.YELLOW}{layer+1}:")
             for row in range(3):
@@ -34,10 +41,12 @@ class Board:
         print()
 
 
+    # Check if the cells on the board are filled.
     def is_full(self):
         return all(cell != " " for cell in self.cells)
     
 
+    # Place a move on the board if the chosen cell is empty.
     def play_move(self, cell_num, symbol):
         if self.cells[cell_num - 1] == " ":
             self.cells[cell_num - 1] = symbol
@@ -46,6 +55,7 @@ class Board:
             return False
         
 
+    # Check for winning compinations.
     def win_check(self, player):
          # Win possibilities that are predefined for simplicity. In total = 49
         wins = [
@@ -77,6 +87,7 @@ class Board:
         return False
         
     
+    # Get a valid move from the user, handling timeouts and  invalid inputs.
     def valid_move(self):
         while True:
             try:
@@ -95,5 +106,6 @@ class Board:
                 exit()
             
     
+    # Reset the board for a new game.
     def reset(self):
         self.cells = [" " for _ in range(27)]

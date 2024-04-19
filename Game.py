@@ -5,6 +5,7 @@ from Board import Board
 from Player import Player
 from colorama import Fore, Style
 
+# Main game function to control the game flow.
 def game():
         try:
             print(Fore.CYAN + Style.BRIGHT + "Welcome to 3D-Tic-Tac-Toe!")

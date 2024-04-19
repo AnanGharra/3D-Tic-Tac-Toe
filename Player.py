@@ -3,6 +3,7 @@
 from Board import Board
 from colorama import Fore, Style
 
+# Player class to handle player specific details and actions.
 class Player:
     def __init__(self, name, symbol):
         self.name = name
@@ -10,6 +11,7 @@ class Player:
         self.wins = 0
 
 
+    # Perform a move operation for a player.
     def play_move(self, board):
         if isinstance(board, Board):
             board.display()
